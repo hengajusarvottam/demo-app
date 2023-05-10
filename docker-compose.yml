@@ -1,0 +1,54 @@
+version: '3'
+services:
+  db:
+    # use the latest version of the PostgreSQL image available from the Docker Hub.
+    image: postgres:latest
+    #env variables specify the username, password, and db name of the PostgreSQL database
+    environment:
+      POSTGRES_USER: pms
+      POSTGRES_PASSWORD: pms
+      POSTGRES_DB: pmsdb
+    ports:
+      - "127.0.0.1:5433:5432"
+    # "pg_data" map to the /var/lib/postgresql/data directory within the container. 
+    # Allows the PostgreSQL data to be persisted even if the container is stopped or deleted.
+    volumes: 
+      - pg_data:/var/lib/postgresql/data
+
+  web:
+    build:
+      # set to the current directory (.) and path to the Dockerfile is specified as Docker/Dockerfile.
+      context: .
+      dockerfile: Docker/Dockerfile
+    ports:
+      - "5000:5000"
+    # "web" service depends on the "db" service. Ensures database service is started before the web service.
+    depends_on:
+      - db
+    environment:
+      # POSTGRES_HOST: db
+      POSTGRES_USER: pms
+      POSTGRES_PASSWORD: pms
+      POSTGRES_DB: pmsdb
+      DATABASE_URL: postgres://pms:pms@db:5432/pmsdb
+      RAILS_ENV: development
+      PORT: 5000
+    volumes:
+      # Map current directory to the place where docker is currently hosting the files.
+      - /home/sar/tribe-session/demo-app:/rails-docker
+volumes:
+  pg_data:
+
+
+
+# Note: 
+# to remove list of images = docker rmi -f $(docker images -aq)
+# ro remove list of volumes in docker = docker rm -vf $(docker ps -aq) 
+
+# docker system prune -a --volumes
+  #   WARNING! This will remove:
+  # - all stopped containers
+  # - all networks not used by at least one container
+  # - all volumes not used by at least one container
+  # - all images without at least one container associated to them
+  # - all build cache

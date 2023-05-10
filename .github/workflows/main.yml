@@ -1,1 +1,24 @@
+name: Android CI to deploy
+run-name: CI/CD pipeline for android build and deploy
 
+on: push
+env: 
+  TZ: Asia/Tokyo
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: 
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: demo-app
+          registry: ghcr.io
+          tags: V1
+          username: ${{ secrets.GHCR_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
+        
