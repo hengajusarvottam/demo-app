@@ -1,5 +1,5 @@
-name: Android CI to deploy
-run-name: CI/CD pipeline for android build and deploy
+name: CI to deploy on GitHub
+run-name: CI/CD pipeline GitHub deployment
 
 on: push
 env: 
@@ -18,7 +18,7 @@ jobs:
         with:
           image: demo-app
           registry: ghcr.io
-          tags: V2
+          tags: V3
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
         
