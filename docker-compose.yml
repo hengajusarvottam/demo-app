@@ -20,6 +20,7 @@ services:
       # set to the current directory (.) and path to the Dockerfile is specified as Docker/Dockerfile.
       context: .
       dockerfile: Docker/Dockerfile
+    # image: ghcr.io/hengajusarvottam/demo-app:V3
     ports:
       - "5000:5000"
     # "web" service depends on the "db" service. Ensures database service is started before the web service.
