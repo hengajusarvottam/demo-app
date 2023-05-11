@@ -36,7 +36,7 @@ services:
       PORT: 5000
     volumes:
       # Map current directory to the place where docker is currently hosting the files.
-      - /home/sar/tribe-session/demo-app:/rails-docker
+      - ./app/:/rails-docker
 volumes:
   pg_data:
 
