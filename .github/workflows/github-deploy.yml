@@ -18,7 +18,7 @@ jobs:
         with:
           image: demo-app
           registry: ghcr.io
-          tags: V5
+          tags: V6
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
         
