@@ -36,7 +36,8 @@ services:
       PORT: 5000
     volumes:
       # Map current directory to the place where docker is currently hosting the files.
-      - ./app/:/rails-docker
+      # - $PWD/app:/rails-docker
+      - .:/rails-docker
 volumes:
   pg_data:
 
