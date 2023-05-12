@@ -1,6 +1,7 @@
 version: '3'
 services:
   db:
+    container_name: PostgreSQL
     # use the latest version of the PostgreSQL image available from the Docker Hub.
     image: postgres:latest
     #env variables specify the username, password, and db name of the PostgreSQL database
@@ -36,7 +37,6 @@ services:
       PORT: 5000
     volumes:
       # Map current directory to the place where docker is currently hosting the files.
-      # - $PWD/app:/rails-docker
       - .:/rails-docker
 volumes:
   pg_data:
