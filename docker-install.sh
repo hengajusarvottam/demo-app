@@ -77,7 +77,7 @@ echo "
 Download box with ubuntu image
 ***************
 "
-sudo vagrant box add bento/ubuntu-22.04
+vagrant box add bento/ubuntu-22.04 --provider=virtualbox
 
 echo "
 ***************
