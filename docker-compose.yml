@@ -28,7 +28,6 @@ services:
     depends_on:
       - db
     environment:
-      # POSTGRES_HOST: db
       POSTGRES_USER: pms
       POSTGRES_PASSWORD: pms
       POSTGRES_DB: pmsdb
