@@ -1,7 +1,9 @@
 name: CI to deploy on GitHub
 run-name: CI/CD pipeline GitHub deployment
 
-on: push
+on:
+  workflow_dispatch:
+    
 env: 
   TZ: Asia/Tokyo
 
